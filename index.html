@@ -19,7 +19,13 @@
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("glcanvas") });
     renderer.setSize(window.innerWidth, window.innerHeight);
-
+window.addEventListener('resize', () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      renderer.setSize(width, height);
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+    });
     // Create a pawn-like geometry (for simplicity: stack of spheres and cylinders)
     const material = new THREE.MeshStandardMaterial({ color: 0x333333 });
     const pawn = new THREE.Group();
