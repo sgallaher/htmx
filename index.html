@@ -39,9 +39,14 @@
 
     // Cube
     const geometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshNormalMaterial(); // Colorful cube
+    const material = new THREE.MeshNormalMaterial();
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
+
+    // Add a directional light for visibility
+    const light = new THREE.DirectionalLight(0xffffff, 1);
+    light.position.set(5, 5, 5);
+    scene.add(light);
 
     camera.position.z = 3;
 
